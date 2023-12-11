@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Lovers' Hub</title>
+  <style>
+
+    /* CSS Design */
+    /* Grid for Grooming */
+    .grooming-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 20px;
+    }
+
+    /* Collapsible sets for Pet Day Camp */
+    .collapsible, .set-header {
+      background-color: #f3f3f3;
+      color: #333;
+      cursor: pointer;
+      padding: 10px;
+      border: none;
+      text-align: left;
+      outline: none;
+      width: 100%;
+      transition: 0.4s;
+    }
+
+    .content, .set-content {
+      display: none;
+      overflow: hidden;
+      padding-left: 20px;
+    }
+
+    /* Pet Lover Ambience  */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #d2b48c; /* Light brown mocha background */
+      color: #333; /* Text color */
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: url('images/pawprint.png') center/cover; /* Change 'images/pawprint' to the path of your image. */
+      height: 200px; /* Decide on the header's height. */
+      color: white; /* Colored text above the picture */
+      text-align: center;
+      padding-top: 80px; /* As necessary, adjust the spacing */
+    }
+
+    nav {
+      background-color: #333; /* The navigation bar is dark. */
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline; /* Hover over to highlight */
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #333; /* Footer in the dark */
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Simple styling */
+    .contact-info {
+      margin-bottom: 20px;
+    }
+
+    .contact-info h3 {
+      margin-top: 0;
+    }
+
+    .contact-info p {
+      margin-bottom: 5px;
+    }
+
+    #map {
+      height: 400px;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Pet Lovers' Hub</h1>
+  </header>
+  <nav>   
+    <a href="index.html">Blog</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="pet_services.html">Pet Services</a>
+  </nav>
+  <main>
+    <h1>Pet Services</h1>
+
+    <h2>Grooming</h2>
+    <div class="grooming-grid">
+      <!-- Grooming service grid items -->          
+      <div id="map"></div>
+      <div>2nd Grooming Service</div>
+      <div>3rd Grooming Service</div>
+      <!-- As needed, add more grooming services. -->
+    </div>
+
+    <h2>Pets Hotel</h2>
+    <!-- Content for Pets Hotel that can be collapsed -->
+    <button class="collapsible">More information about our Pets Hotel can be found by clicking here.</button>
+    <div class="content">
+      <p>We offer a lavish and safe retreat for your beloved pets at our Pets Hotel. Our state-of-the-art facilities deliver high-quality accommodations, guaranteeing your pet's well-being and joy. We aim to establish a comfortable environment for your furry companions, providing spacious, climate-controlled rooms, personalized attention, and continuous care from our experienced staff. Our primary focus is on ensuring your pet enjoys a delightful stay, filled with attention, enjoyment, and relaxation</p>
+    </div>
+
+    <h2>Day Camp for Pets</h2>
+    <!-- Collapsible Pet Day Camp Sets -->
+    <div class="collapsible-set">
+      <button class="set-header">1st Group: Activities</button>
+      <div class="set-content">
+        <p>Morning Recreation</p>
+        <p>Sessions of Instruction</p>
+        <p>Activities for Socialization</p>
+      </div>
+    </div>
+
+    <div class="collapsible-set">
+      <button class="set-header">2nd Group: Facilities</button>
+      <div class="set-content">
+        <p>Play Area Outside</p>
+        <p>Zones of Rest</p>
+        <p>Food Stations</p>
+      </div>
+    </div>
+
+    <div class="collapsible-set">
+      <button class="set-header">3rd Group - Regulation</button>
+      <div class="set-content">
+        <p>Requirements for Registration</p>
+        <p>Every Day Timetable</p>
+        <p>Cost Alternatives</p>
+      </div>
+    </div>
+    <br><br><br><br><br><br>
+  </main>
+  <footer>
+    <p>&copy; 2023 Pet Lovers' Hub</p>
+  </footer>
+
+  <!-- Include jQuery library -->
+  <script src="plugins/jquery-3.6.0.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRZsdSkGtbAwPf8I5Zktf_s9tfBmJIg5o&callback=initMap" async defer></script>
+  <script>
+
+    // Set the map's initial state.
+    function initMap() {
+      // Define the map options (centeredness and initial zoom level)
+      const mapOptions = {
+        center: { lat: 52.2707789, lng: -113.8304593 }, // As an example, consider the coordinates of New York City.
+        zoom: 12 // As needed, adjust the zoom level.
+      };
+
+      // Provide the map element and options when creating a new map instance.
+      const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    }
+
+    // JavaScript for content that collapses and sets
+    document.addEventListener('DOMContentLoaded', function () {
+      const collElements = document.querySelectorAll('.collapsible, .set-header');
+
+      collElements.forEach(item => {
+        item.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const content = this.nextElementSibling;
+          content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        });
+      });
+    });
+
+  </script>
+
+</body>
+</html>

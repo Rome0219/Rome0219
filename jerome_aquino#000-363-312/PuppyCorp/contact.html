@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Lovers' Page</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #a26617; /* Light Brown background */
+            color: #333; /* Text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #c9b37c; /* Mocha brown background */
+            color: white; /* color of the text above the header */
+            text-align: center;
+            padding-top: 80px; /* As necessary, adjust the spacing */
+        }
+
+        /* Styles of navigation */
+        nav {
+            background-color: #c9b37c; /* Mocha brown navigation bar */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Main content  */
+        main {
+            padding: 20px;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #8B4513; /* Mocha brown footer */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Styles of back buttons */
+        #backButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #cb780c; /* Light brown */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #backButton:hover {
+            background-color: #e49217; /* Light Brown on hover */
+        }
+
+        /* Basic styling */
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="color:black;font-family: cursive;font-size: 36px;">Welcome to Pet Lovers Page</h1>
+    </header>
+    <nav>
+        <a href="index.html">Blog</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="pet_services.html">Pet Services</a>
+    </nav>
+    <main>
+        <button id="backButton">BACK</button>
+        <h2>Contact Us</h2>
+
+        <div class="contact-info">
+            <h3>Email Address</h3>
+            <p>jerome.aquino@rdpolytech.ca</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>Mailing Address</h3>
+            <p>31 Vanier Drive, Red Deer, AB, T4R0E4<br>City, State, Zip Code</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>Phone Number</h3>
+            <p>(587) 304-9834</p>
+        </div>
+        <br><br>
+    </main>
+    <footer>
+        <p>&copy; Pet Lovers Page 2023</p>
+    </footer>
+
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Obtain the URL of the current page.
+        const currentPage = window.location.href;
+
+        // Obtain every navigation link.
+        const links = document.querySelectorAll('nav a');
+
+        // Go through each link one at a time, changing the matching link's background color.
+        links.forEach(link => {
+            if (link.href === currentPage) {
+                link.style.backgroundColor = '#e49217'; /* Light Brown */
+            }
+        });
+
+        // jQuery function to handle the back button click event
+        $(document).ready(function () {
+            $('#backButton').on('click', function () {
+                // When the button is pressed, the page is redirected to index.php.
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+
+</html>
